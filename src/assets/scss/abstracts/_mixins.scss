@@ -1,0 +1,19 @@
+@use 'functions' as *;
+
+@mixin text-props($font-size: null, $line-height: null, $font-weight: null, $font-family: null, $font-style: null) {
+    @if $font-family {
+      font-family: $font-family;
+    }
+    @if $font-size {
+      font-size: rem($font-size);
+    }
+    @if $font-weight {
+      font-weight: $font-weight;
+    }
+    @if $font-style {
+      font-style: $font-style;
+    }
+    @if $font-size and $line-height {
+      line-height: calc($line-height / $font-size);
+    }
+}
