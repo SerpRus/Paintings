@@ -15,8 +15,15 @@
 
 html {
     font-family: Merriweather sans-serif;
+    line-height: 1.5;
 
     color: $base-text;
+}
+
+body {
+    font-size: rem(14);
+
+    background-color: #F6F3F3;
 }
 
 html, body, #app {
@@ -31,5 +38,9 @@ a {
     text-decoration: none;
 
     color: inherit;
+}
+
+input, button {
+    font-family:  Merriweather sans-serif;;
 }
 

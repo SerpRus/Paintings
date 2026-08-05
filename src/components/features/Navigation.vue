@@ -39,6 +39,14 @@ export default {
     &__list {
         display: flex;
         gap: rem(48);
+
+        &-item {
+            display: flex;
+        }
+
+        &-link {
+            @include text-props(14);
+        }
     }
 }
 </style>
