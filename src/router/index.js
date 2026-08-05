@@ -1,10 +1,10 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Catalog from '../components/views/Catalog.vue';
-import Delivery from '../components/views/Delivery.vue';
-import Payment from '../components/views/Payment.vue';
-import Contacts from '../components/views/Contacts.vue';
-import AboutUs from '../components/views/AboutUs.vue';
+import Catalog from '../components/pages/Catalog.vue';
+import Delivery from '../components/pages/Delivery.vue';
+import Payment from '../components/pages/Payment.vue';
+import Contacts from '../components/pages/Contacts.vue';
+import AboutUs from '../components/pages/AboutUs.vue';
 
 Vue.use(VueRouter);
 

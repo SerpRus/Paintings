@@ -1,3 +1,3 @@
 import './check.svg';
-import './adress.svg';
+import './address.svg';
 import './phone.svg';

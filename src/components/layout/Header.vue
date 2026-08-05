@@ -2,9 +2,9 @@
     <div class="header">
         <Container>
             <div class="header__wrapper">
-                <Navigation />
+                <Navigation class="header__navigation" />
 
-                <Search />
+                <Search placeholder="Поиск по названию картины" name="search" />
             </div>
         </Container>
     </div>
@@ -24,5 +24,17 @@ export default {
 <style lang="scss">
 .header {
     padding: rem(24) 0;
+
+    border-bottom: rem(1) solid #E1E1E1;
+
+    &__wrapper {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__navigation {
+        padding: 0  rem(96);
+    }
 }
 </style>

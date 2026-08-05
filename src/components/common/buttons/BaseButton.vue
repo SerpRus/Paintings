@@ -1,5 +1,5 @@
 <template>
-    <button class="base-button" :type="type">
+    <button class="base-button" :class="theme" :type="type">
         <BaseIcon v-if="iconName" :icon-name="iconName" />
 
         {{ text }}
@@ -23,6 +23,13 @@ export default {
         text: {
             type: String,
         },
+        theme: {
+            type: String,
+            default: 'default',
+            validator: function (value) {
+                return ['default', 'brand', ].includes(value)
+            }
+        },
         iconName: {
             type: String,
         },
@@ -37,6 +44,33 @@ export default {
 
 <style lang="scss">
 .base-button {
+    $root: &;
 
+    @include text-props(14, 21, 700);
+
+    min-width: rem(118);
+    padding: rem(14);
+
+    cursor: pointer;
+
+    transition: all 0.2s linear;
+
+    color: #fff;
+    background-color: #403432;
+    border: none;
+
+    &#{$root}:hover {
+        background-color: #776763;
+    }
+
+    &#{$root}:disabled {
+        cursor: not-allowed;
+
+        background-color: #C1B4B1;
+    }
+
+    &.brand {
+        background-color: #5B3A32;
+    }
 }
 </style>
