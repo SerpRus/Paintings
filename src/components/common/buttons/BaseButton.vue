@@ -48,8 +48,13 @@ export default {
 
     @include text-props(14, 21, 700);
 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: rem(4);
+
     min-width: rem(118);
-    padding: rem(14);
+    padding: rem(14) rem(6);
 
     cursor: pointer;
 

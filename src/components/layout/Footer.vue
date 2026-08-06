@@ -42,16 +42,31 @@ export default {
 
     &__wrapper {
         display: flex;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: rem(16);
+
+        @media ($screen-desktop-small) {
+            flex-direction: row;
+            justify-content: space-between;
+        }
     }
 
     &__navigation {
-        padding: 0  rem(96);
+        @media ($screen-desktop-small) {
+            padding: 0  rem(80);
+        }
     }
 
     &__contacts {
         display: flex;
-        gap: rem(50);
+        flex-direction: column;
+        align-items: center;
+        gap: rem(16);
+
+        @media ($screen-desktop-small) {
+            flex-direction: row;
+            gap: rem(50);
+        }
     }
 }
 </style>

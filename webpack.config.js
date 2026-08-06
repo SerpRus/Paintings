@@ -71,7 +71,7 @@ module.exports = {
                         },
                     },
                 ],
-            }
+            },
         ]
     },
     resolve: {
@@ -91,8 +91,11 @@ module.exports = {
         new CopyWebpackPlugin({
             patterns: [
                 {
-                    from: 'public/favicon.ico',
-                    to: 'favicon.ico'
+                    from: 'public',
+                    to: '',
+                    globOptions: {
+                        ignore: ['**/index.html']
+                    }
                 },
             ],
         }),

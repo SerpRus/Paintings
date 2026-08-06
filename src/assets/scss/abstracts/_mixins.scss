@@ -17,3 +17,7 @@
       line-height: calc($line-height / $font-size);
     }
 }
+
+@mixin flex-item-width($num, $gap) {
+  width: calc((100% / #{$num}) - (((#{$num} - 1) / #{$num}) * #{$gap}));
+}
