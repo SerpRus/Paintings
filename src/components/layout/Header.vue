@@ -4,7 +4,7 @@
             <div class="header__wrapper">
                 <Navigation class="header__navigation" />
 
-                <Search placeholder="Поиск по названию картины" name="search" />
+                <Search class="header__search" placeholder="Поиск по названию картины" name="search" />
             </div>
         </Container>
     </div>
@@ -29,12 +29,27 @@ export default {
 
     &__wrapper {
         display: flex;
-        align-items: center;
-        justify-content: space-between;
+        flex-direction: column;
+        gap: rem(16);
+
+        @media ($screen-desktop-small) {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+        }
     }
 
     &__navigation {
-        padding: 0  rem(96);
+        @media ($screen-desktop-small) {
+            padding: 0  rem(80);
+        }
+    }
+
+    &__search {
+        @media ($screen-tablet) {
+            align-self: flex-end;
+        }
     }
 }
 </style>

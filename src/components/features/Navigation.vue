@@ -38,7 +38,13 @@ export default {
 .navigation {
     &__list {
         display: flex;
-        gap: rem(48);
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: rem(12) rem(48);
+
+        @media ($screen-desktop-small) {
+            justify-content: flex-start;
+        }
 
         &-item {
             display: flex;

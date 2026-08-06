@@ -14,7 +14,7 @@
 }
 
 html {
-    font-family: Merriweather sans-serif;
+    font-family: Merriweather, sans-serif;
     line-height: 1.5;
 
     color: $base-text;
@@ -40,7 +40,7 @@ a {
     color: inherit;
 }
 
-input, button {
-    font-family:  Merriweather sans-serif;;
+input, button, h1, h2, h3, h4, h5, h6, {
+    font-family: Merriweather, sans-serif, serif;
 }
 

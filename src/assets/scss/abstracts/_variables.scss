@@ -2,3 +2,15 @@ $font-size-base: 16px;
 
 // colors
 $base-text: #343030;
+
+// breakpoints
+$screen-desktop: "(min-width: 1440px)";
+$screen-desktop-small: "(min-width: 1280px)";
+$screen-tablet-large: "(min-width: 1024px)";
+$screen-tablet: "(min-width: 768px)";
+$screen-mobile: "(min-width: 360px)";
+
+$screen-desktop-max: "(max-width: 1439px)";
+$screen-desktop-small-max: "(max-width: 1279px)";
+$screen-tablet-large-max: "(max-width: 1023px)";
+$screen-tablet-max: "(max-width: 767px)";
