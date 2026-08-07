@@ -4,7 +4,7 @@
             <div class="header__wrapper">
                 <Navigation class="header__navigation" />
 
-                <Search class="header__search" placeholder="Поиск по названию картины" name="search" />
+                <Search class="header__search" placeholder="Поиск по названию картины" name="search" @search="(searchQuery) => $emit('search', searchQuery)" />
             </div>
         </Container>
     </div>

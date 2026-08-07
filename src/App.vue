@@ -1,6 +1,6 @@
 <template>
     <div id="app" class="app">
-        <Header class="app__header"/>
+        <Header class="app__header" @search="onSearch" />
 
         <main class="app__main">
             <RouterView />
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import {computed} from 'vue';
+
 import Header from './components/layout/Header.vue';
 import Footer from './components/layout/Footer.vue';
 import Container from './components/layout/Container.vue';
@@ -23,6 +25,21 @@ export default {
         Footer,
         Container,
         BaseIcon,
+    },
+    provide() {
+        return {
+            searchQuery: computed(() => this.searchQuery)
+        }
+    },
+    data() {
+        return {
+            searchQuery: ''
+        }
+    },
+    methods: {
+        onSearch(searchQuery) {
+            this.searchQuery = searchQuery;
+        }
     },
 }
 </script>
