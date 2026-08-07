@@ -11,8 +11,14 @@
                 :old-price="item.oldPrice"
                 :price="item.price"
                 @click="onClick(item)"
+                @open-modal="openModal(item)"
             />
         </div>
+
+        <DetailProductModal
+            :visible.sync="showModal"
+            :product-data="currentProductData"
+        />
     </div>
 </template>
 
@@ -20,10 +26,12 @@
 import Container from '@/components/layout/Container.vue';
 import BaseCard from '@/components/common/cards/BaseCard.vue';
 import BaseModal from '@/components/common/modals/BaseModal.vue';
+import DetailProductModal from '@/components/common/modals/DetailProductModal.vue';
 
 const baseCatalogItems = [{
     id: 'painting-1',
     imageSrc: '/images/painting-1.jpg',
+    images: ['/images/painting-1.jpg', '/images/painting-1.jpg', '/images/painting-1.jpg'],
     title: '«Рождение Венеры» Сандро Боттичелли',
     status: 'available',
     oldPrice: 2000000,
@@ -31,12 +39,14 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-2',
     imageSrc: '/images/painting-2.jpg',
+    images: ['/images/painting-2.jpg', '/images/painting-2.jpg', '/images/painting-2.jpg'],
     title: '«Тайная вечеря»  Леонардо да Винчи',
     status: 'available',
     price: 3000000,
 }, {
     id: 'painting-3',
     imageSrc: '/images/painting-3.jpg',
+    images: ['/images/painting-3.jpg', '/images/painting-3.jpg', '/images/painting-3.jpg'],
     title: '«Сотворение Адама» Микеланджело',
     status: 'available',
     oldPrice: 6000000,
@@ -44,6 +54,7 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-4',
     imageSrc: '/images/painting-4.jpg',
+    images: ['/images/painting-4.jpg', '/images/painting-4.jpg', '/images/painting-4.jpg'],
     title: '«Урок анатомии»  Рембрандт',
     status: 'sold',
     oldPrice: 2000000,
@@ -51,6 +62,7 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-5',
     imageSrc: '/images/painting-1.jpg',
+    images: ['/images/painting-1.jpg', '/images/painting-1.jpg', '/images/painting-1.jpg'],
     title: '«Рождение Венеры» Сандро Боттичелли',
     status: 'available',
     oldPrice: 2000000,
@@ -58,12 +70,14 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-6',
     imageSrc: '/images/painting-2.jpg',
+    images: ['/images/painting-2.jpg', '/images/painting-2.jpg', '/images/painting-2.jpg'],
     title: '«Тайная вечеря»  Леонардо да Винчи',
     status: 'available',
     price: 3000000,
 }, {
     id: 'painting-7',
     imageSrc: '/images/painting-3.jpg',
+    images: ['/images/painting-3.jpg', '/images/painting-3.jpg', '/images/painting-3.jpg'],
     title: '«Сотворение Адама» Микеланджело',
     status: 'available',
     oldPrice: 6000000,
@@ -71,6 +85,7 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-8',
     imageSrc: '/images/painting-4.jpg',
+    images: ['/images/painting-4.jpg', '/images/painting-4.jpg', '/images/painting-4.jpg'],
     title: '«Урок анатомии»  Рембрандт',
     status: 'sold',
     oldPrice: 2000000,
@@ -78,6 +93,7 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-9',
     imageSrc: '/images/painting-1.jpg',
+    images: ['/images/painting-1.jpg', '/images/painting-1.jpg', '/images/painting-1.jpg'],
     title: '«Рождение Венеры» Сандро Боттичелли',
     status: 'available',
     oldPrice: 2000000,
@@ -85,12 +101,14 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-10',
     imageSrc: '/images/painting-2.jpg',
+    images: ['/images/painting-2.jpg', '/images/painting-2.jpg', '/images/painting-2.jpg'],
     title: '«Тайная вечеря»  Леонардо да Винчи',
     status: 'available',
     price: 3000000,
 }, {
     id: 'painting-11',
     imageSrc: '/images/painting-3.jpg',
+    images: ['/images/painting-3.jpg', '/images/painting-3.jpg', '/images/painting-3.jpg'],
     title: '«Сотворение Адама» Микеланджело',
     status: 'available',
     oldPrice: 6000000,
@@ -98,6 +116,7 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-12',
     imageSrc: '/images/painting-4.jpg',
+    images: ['/images/painting-4.jpg', '/images/painting-4.jpg', '/images/painting-4.jpg'],
     title: '«Урок анатомии»  Рембрандт',
     status: 'sold',
     oldPrice: 2000000,
@@ -105,6 +124,7 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-13',
     imageSrc: '/images/painting-1.jpg',
+    images: ['/images/painting-1.jpg', '/images/painting-1.jpg', '/images/painting-1.jpg'],
     title: '«Рождение Венеры» Сандро Боттичелли',
     status: 'available',
     oldPrice: 2000000,
@@ -112,12 +132,14 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-14',
     imageSrc: '/images/painting-2.jpg',
+    images: ['/images/painting-2.jpg', '/images/painting-2.jpg', '/images/painting-2.jpg'],
     title: '«Тайная вечеря»  Леонардо да Винчи',
     status: 'available',
     price: 3000000,
 }, {
     id: 'painting-15',
     imageSrc: '/images/painting-3.jpg',
+    images: ['/images/painting-3.jpg', '/images/painting-3.jpg', '/images/painting-3.jpg'],
     title: '«Сотворение Адама» Микеланджело',
     status: 'available',
     oldPrice: 6000000,
@@ -125,6 +147,7 @@ const baseCatalogItems = [{
 }, {
     id: 'painting-16',
     imageSrc: '/images/painting-4.jpg',
+    images: ['/images/painting-4.jpg', '/images/painting-4.jpg', '/images/painting-4.jpg'],
     title: '«Урок анатомии»  Рембрандт',
     status: 'sold',
     oldPrice: 2000000,
@@ -133,13 +156,14 @@ const baseCatalogItems = [{
 
 export default {
     name: 'CardList',
-    components: {Container, BaseCard, BaseModal},
+    components: {Container, BaseCard, BaseModal, DetailProductModal},
     inject: ['searchQuery'],
     data() {
         return {
             catalogItems: baseCatalogItems,
             reservedIds: [],
             showModal: false,
+            currentProductData: null,
         }
     },
     mounted() {
@@ -193,8 +217,10 @@ export default {
                 }
             });
         },
-        onModalClose() {
-            console.log('Модальное окно закрыто');
+        openModal(productData) {
+            this.currentProductData = productData;
+
+            this.showModal = true;
         }
     }
 }
