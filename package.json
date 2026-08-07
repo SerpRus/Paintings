@@ -13,6 +13,7 @@
   "description": "",
   "dependencies": {
     "vue": "^2.7.16",
+    "vue-l-carousel": "^1.1.0",
     "vue-router": "^3.6.5"
   },
   "devDependencies": {

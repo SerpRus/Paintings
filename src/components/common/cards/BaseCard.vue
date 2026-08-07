@@ -1,11 +1,11 @@
 <template>
     <div class="base-card" :class="status">
         <div class="base-card__img-wrapper">
-            <img class="base-card__img" :src="imageSrc" :alt="imageAlt" />
+            <img class="base-card__img" :src="imageSrc" :alt="imageAlt" @click="$emit('open-modal')" />
         </div>
 
         <div class="base-card__content">
-            <div class="base-card__title">
+            <div class="base-card__title" @click="$emit('open-modal')">
                 {{ title }}
             </div>
 
@@ -105,6 +105,8 @@ export default {
     border: rem(1) solid #E1E1E1;
 
     &.sold {
+        pointer-events: none;
+
         &::after {
             content: '';
 
@@ -132,6 +134,8 @@ export default {
 
         width: 100%;
         height: 100%;
+        
+        cursor: pointer;
 
         &-wrapper {
             position: relative;
@@ -151,6 +155,8 @@ export default {
 
     &__title {
         @include text-props(18);
+
+        cursor: pointer;
 
         &:not(:last-child) {
             margin-bottom: rem(22);
