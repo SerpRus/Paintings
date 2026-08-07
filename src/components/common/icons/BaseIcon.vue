@@ -22,7 +22,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .base-icon {
     &.small {
         width: rem(16);

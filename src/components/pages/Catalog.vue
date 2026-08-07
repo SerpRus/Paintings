@@ -20,7 +20,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .catalog {
     padding: rem(45) 0;
 

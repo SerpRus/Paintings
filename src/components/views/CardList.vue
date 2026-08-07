@@ -19,6 +19,7 @@
 <script>
 import Container from '@/components/layout/Container.vue';
 import BaseCard from '@/components/common/cards/BaseCard.vue';
+import BaseModal from '@/components/common/modals/BaseModal.vue';
 
 const baseCatalogItems = [{
     id: 'painting-1',
@@ -132,12 +133,13 @@ const baseCatalogItems = [{
 
 export default {
     name: 'CardList',
-    components: {Container, BaseCard},
+    components: {Container, BaseCard, BaseModal},
     inject: ['searchQuery'],
     data() {
         return {
             catalogItems: baseCatalogItems,
             reservedIds: [],
+            showModal: false,
         }
     },
     mounted() {
@@ -190,6 +192,9 @@ export default {
                     product.status = 'reserved';
                 }
             });
+        },
+        onModalClose() {
+            console.log('Модальное окно закрыто');
         }
     }
 }
