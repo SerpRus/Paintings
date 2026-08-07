@@ -10,7 +10,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .container {
     max-width: rem(1256);
 

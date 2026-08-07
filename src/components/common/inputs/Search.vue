@@ -1,6 +1,14 @@
 <template>
     <div class="search">
-        <input class="search__input" type="text" :placeholder="placeholder" :name="name" autocomplete="off">
+        <input
+            class="search__input"
+            v-model="searchQuery"
+            type="text"
+            :placeholder="placeholder"
+            :name="name"
+            autocomplete="off"
+            @input="onInput"
+        >
 
         <BaseButton class="search__button" text="Найти" />
     </div>
@@ -19,11 +27,31 @@ export default {
         name: {
             type: String,
         }
+    },
+    data() {
+        return {
+            searchQuery: '',
+            searchTimeout: null,
+        }
+    },
+    methods: {
+        onInput(e) {
+            this.isSearching = true;
+
+            clearTimeout(this.searchTimeout);
+            this.searchTimeout = setTimeout(() => {
+                this.$emit('search', this.searchQuery);
+
+            }, 300);
+        },
+    },
+    beforeDestroy() {
+        clearTimeout(this.searchTimeout);
     }
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .search {
     display: flex;
 

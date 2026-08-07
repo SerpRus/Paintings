@@ -1,5 +1,5 @@
 <template>
-    <button class="base-button" :class="theme" :type="type">
+    <button class="base-button" :class="theme" :type="type" @click="$emit('click')">
         <BaseIcon v-if="iconName" :icon-name="iconName" />
 
         {{ text }}
@@ -42,7 +42,7 @@ export default {
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .base-button {
     $root: &;
 

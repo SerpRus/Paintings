@@ -21,7 +21,7 @@
                         <div class="base-card__price">{{ formatPrice(price) }}</div>
                     </div>
 
-                    <BaseButton :text="buttonText" :icon-name="buttonIcon" :theme="buttonTheme" />
+                    <BaseButton :text="buttonText" :icon-name="buttonIcon" :theme="buttonTheme" @click="onClick" />
                 </div>
             </div>
         </div>
@@ -56,7 +56,7 @@ export default {
             type: String,
             default: 'available',
             validator: function (value) {
-                return ['available', 'reserved', 'sold', ].includes(value)
+                return ['available', 'processing', 'reserved', 'sold',].includes(value)
             }
         },
     },
@@ -70,7 +70,15 @@ export default {
             return this.status === 'reserved'
         },
         buttonText() {
-            return this.isReserved ? 'В корзине' : 'Купить';
+            if (this.isReserved) {
+                return 'В корзине'
+            }
+
+            if (this.status === 'processing') {
+                return 'В обработке'
+            }
+
+            return 'Купить';
         },
         buttonIcon() {
             return this.isReserved ? 'check' : '';
@@ -78,11 +86,16 @@ export default {
         buttonTheme() {
             return this.isReserved ? 'brand' : 'default';
         },
+    },
+    methods: {
+        onClick() {
+            this.$emit('click');
+        }
     }
 }
 </script>
 
-<style lang="scss">
+<style scoped lang="scss">
 .base-card {
     position: relative;
 
